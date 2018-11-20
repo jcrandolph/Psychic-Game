@@ -1,8 +1,12 @@
 
 //generate a random letter
 let alphabet= ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-let randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-        console.log(randomLetter); 
+let randomLetter = generateRandLetter();
+      console.log(randomLetter); 
+
+function generateRandLetter() {
+    return alphabet[Math.floor(Math.random() * alphabet.length)];
+}
 
 //variables
 let wins= 0;
@@ -19,7 +23,9 @@ document.onkeyup = function(event){
    
     if (randomLetter === userGuess){
         //start new round
-        wins++; guessesLeft= 10; guesses= []; 
+        wins++; guessesLeft= 10; guesses= [];
+        randomLetter = generateRandLetter();
+        console.log(randomLetter);  
 }
     else {
         guessesLeft--; guesses.push(userGuess);
@@ -27,6 +33,7 @@ document.onkeyup = function(event){
 
     if (guessesLeft === 0){
         losses++; guessesLeft= 10; guesses= [];
+        randomLetter = generateRandLetter();
 }
  //html
  document.getElementById("wins").innerHTML = " " + wins;
